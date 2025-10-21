@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     loadUserStats();
-  }, [selectedDifficulty]);
+  }, [selectedDifficulty, loadUserStats]);
 
   const loadUserStats = async () => {
     try {

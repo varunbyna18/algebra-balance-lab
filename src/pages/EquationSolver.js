@@ -15,7 +15,7 @@ const EquationSolver = () => {
 
   useEffect(() => {
     loadEquations();
-  }, [difficulty]);
+  }, [difficulty, loadEquations]);
 
   const loadEquations = async () => {
     try {
