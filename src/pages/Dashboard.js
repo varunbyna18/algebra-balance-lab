@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { attemptsAPI } from '../services/api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import './Dashboard.css';
@@ -9,11 +9,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
 
-  useEffect(() => {
-    loadUserStats();
-  }, [selectedDifficulty, loadUserStats]);
-
-  const loadUserStats = async () => {
+  const loadUserStats = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await attemptsAPI.getUserAttempts('user123', selectedDifficulty === 'all' ? null : selectedDifficulty);
@@ -26,7 +22,11 @@ const Dashboard = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedDifficulty]);
+
+  useEffect(() => {
+    loadUserStats();
+  }, [loadUserStats]);
 
   const COLORS = {
     easy: '#27ae60',

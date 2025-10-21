@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { equationsAPI, attemptsAPI } from '../services/api';
 import BalanceScale from '../components/BalanceScale';
 import './EquationSolver.css';
@@ -13,11 +13,7 @@ const EquationSolver = () => {
   const [startTime, setStartTime] = useState(null);
   const [attempts, setAttempts] = useState(0);
 
-  useEffect(() => {
-    loadEquations();
-  }, [difficulty, loadEquations]);
-
-  const loadEquations = async () => {
+  const loadEquations = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await equationsAPI.getEquations(difficulty === 'all' ? null : difficulty);
@@ -31,7 +27,11 @@ const EquationSolver = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [difficulty]);
+
+  useEffect(() => {
+    loadEquations();
+  }, [loadEquations]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
