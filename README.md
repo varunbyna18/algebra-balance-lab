@@ -1,70 +1,259 @@
-# Getting Started with Create React App
+# Algebra Balance Lab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive web application that helps users understand and solve basic algebraic equations through interactive visualizations and real-time feedback.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Balance Scale**: Visual representation of equations with real-time balance feedback
+- **Multiple Difficulty Levels**: Easy, Medium, and Hard equations
+- **Progress Tracking**: Detailed statistics and performance analytics
+- **Responsive Design**: Works seamlessly across all devices
+- **Real-time Feedback**: Instant verification of answers with visual cues
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- React.js with React Router for navigation
+- Recharts for data visualization
+- Axios for API communication
+- Responsive CSS with modern design
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- Node.js with Express.js
+- MongoDB for data persistence
+- RESTful API with JSON communication
+- CORS enabled for cross-origin requests
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+algebra-balance-lab/
+├── backend/
+│   ├── models/
+│   │   ├── Equation.js
+│   │   └── Attempt.js
+│   ├── routes/
+│   │   ├── equations.js
+│   │   └── attempts.js
+│   ├── server.js
+│   ├── seed.js
+│   └── package.json
+├── src/
+│   ├── components/
+│   │   ├── Navbar.js
+│   │   ├── Navbar.css
+│   │   ├── BalanceScale.js
+│   │   └── BalanceScale.css
+│   ├── pages/
+│   │   ├── Home.js
+│   │   ├── Home.css
+│   │   ├── EquationSolver.js
+│   │   ├── EquationSolver.css
+│   │   ├── Dashboard.js
+│   │   └── Dashboard.css
+│   ├── services/
+│   │   └── api.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+└── README.md
+```
 
-### `npm run build`
+## Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB (local installation or MongoDB Atlas)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-### `npm run eject`
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Start MongoDB (if running locally):
+   ```bash
+   mongod
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Seed the database with sample equations:
+   ```bash
+   npm run seed
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Start the backend server:
+   ```bash
+   npm run dev
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The backend will run on `http://localhost:5000`
 
-## Learn More
+### Frontend Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Navigate to the root directory:
+   ```bash
+   cd ..
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The frontend will run on `http://localhost:3000`
 
-### Analyzing the Bundle Size
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Equations
+- `GET /api/equations` - Get all equations (optional difficulty filter)
+- `GET /api/equations/:id` - Get specific equation
+- `POST /api/equations/verify` - Verify user answer
 
-### Making a Progressive Web App
+### Attempts
+- `POST /api/attempts` - Record new attempt
+- `GET /api/attempts/:userId` - Get user statistics
+- `GET /api/attempts/:userId/stats` - Get detailed progress data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Pages
 
-### Advanced Configuration
+### Home Page
+- Introduction to the application
+- Feature overview with visual elements
+- Navigation to other sections
+- Difficulty level explanations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Equation Solver Page
+- Interactive equation solving interface
+- Real-time balance scale visualization
+- Difficulty filtering
+- Answer verification with feedback
+- Progress tracking
 
-### Deployment
+### Dashboard Page
+- Performance statistics and charts
+- Accuracy tracking by difficulty
+- Daily progress visualization
+- Recent attempts history
+- Achievement system
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Key Features
 
-### `npm run build` fails to minify
+### Interactive Balance Scale
+- Visual representation of equation balance
+- Real-time tilt based on user input
+- Color-coded feedback for correct/incorrect answers
+- Step-by-step calculation display
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Progress Tracking
+- Total attempts and accuracy percentage
+- Performance breakdown by difficulty
+- Daily progress charts
+- Achievement badges
+
+### Responsive Design
+- Mobile-first approach
+- Adaptive layouts for all screen sizes
+- Touch-friendly interactions
+- Optimized performance
+
+## Development
+
+### Adding New Equations
+Equations are stored in MongoDB with the following structure:
+```javascript
+{
+  equation: "2x + 4 = 10",
+  difficulty: "easy",
+  solution: 3,
+  variables: [{ name: "x", coefficient: 2 }],
+  constants: [{ value: 4, side: "left" }, { value: 10, side: "right" }],
+  description: "Linear equation with coefficient"
+}
+```
+
+### Customizing the Balance Scale
+The balance scale component can be customized by modifying:
+- Colors and styling in `BalanceScale.css`
+- Animation timing and effects
+- Visual feedback indicators
+
+## 🚀 Deployment
+
+### Quick Deploy to Vercel
+
+1. **Push to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Deploy to production"
+   git push origin main
+   ```
+
+2. **Connect to Vercel:**
+   - Go to [Vercel](https://vercel.com)
+   - Import your GitHub repository
+   - Set environment variables:
+     ```
+     MONGODB_URI=mongodb+srv://varunbyna157_db_user:JTGeBrpZy6lCSsTa@cluster0.mgbx7np.mongodb.net/algebra-balance-lab
+     NODE_ENV=production
+     ```
+
+3. **Deploy automatically!**
+
+### Manual Deployment Steps
+
+1. **Initialize Git:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+2. **Create GitHub Repository:**
+   - Create new repo on GitHub
+   - Connect local repo: `git remote add origin https://github.com/YOUR_USERNAME/algebra-balance-lab.git`
+   - Push: `git push -u origin main`
+
+3. **Deploy to Vercel:**
+   - Import GitHub repository in Vercel
+   - Configure build settings
+   - Set environment variables
+   - Deploy!
+
+See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) for detailed instructions.
+
+## 🌐 Live Demo
+
+[View Live Application](https://your-app-name.vercel.app)
+
+## 📊 Production Features
+
+✅ **10 Complex Algebra Questions** (Easy, Medium, Hard)
+✅ **Interactive Balance Scale** visualization  
+✅ **Real-time Feedback** on answers
+✅ **MongoDB Atlas** cloud database
+✅ **Responsive Design** for all devices
+✅ **Automatic Deployments** from GitHub
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the MIT License.
