@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Use absolute URL from env when provided; default to same-origin '/api' for Vercel
-const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+// Use absolute URL from env when provided; default to Render backend
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://algebra-balance-lab.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
