@@ -12,10 +12,12 @@ app.use(cors({
     'http://localhost:3000',
     'https://algebra-balance-lab.vercel.app',
     'https://algebra-balance-lab-git-main-varunbyna18.vercel.app',
-    'https://algebra-balance-lab-git-main-varunbyna18s-projects.vercel.app'
+    'https://algebra-balance-lab-git-main-varunbyna18s-projects.vercel.app',
+    'https://algebra-balance-lab-jta3.vercel.app'  // ✅ add this
   ],
   credentials: true
 }));
+
 app.use(express.json());
 
 // MongoDB connection - use direct connection string
