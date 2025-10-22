@@ -1,16 +1,18 @@
 import axios from 'axios';
 
-// Use absolute URL from env when provided; default to Render backend
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://algebra-balance-lab.onrender.com';
+// ✅ Use environment variable from Vercel, fallback to your Render backend
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL?.replace(/\/$/, '') || 'https://algebra-balance-lab.onrender.com';
 
+// ✅ Create Axios instance
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api`, // 👈 added /api here so routes are clean
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Equations API
+// ✅ Equations API
 export const equationsAPI = {
   // Get all equations or filter by difficulty
   getEquations: (difficulty) => {
@@ -29,7 +31,7 @@ export const equationsAPI = {
   },
 };
 
-// Attempts API
+// ✅ Attempts API
 export const attemptsAPI = {
   // Record a new attempt
   recordAttempt: (userId, equationId, userAnswer, timeSpent) => {
