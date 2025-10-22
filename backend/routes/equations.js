@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ POST /api/equations/seed - Seed the database with sample equations
-router.post('/seed', async (req, res) => {
+// ✅ GET /api/equations/seed - Seed the database (for quick browser access)
+router.get('/seed', async (req, res) => {
   try {
     const sampleEquations = [
       { equation: "x + 7 = 12", difficulty: "easy", solution: 5, variables: [{ name: "x", coefficient: 1 }], constants: [{ value: 7, side: "left" }, { value: 12, side: "right" }], description: "Basic addition equation" },
