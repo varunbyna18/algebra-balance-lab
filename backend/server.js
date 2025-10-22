@@ -29,7 +29,8 @@ mongoose.connect(MONGODB_URI, mongooseOptions)
   .catch(err => {
     console.error('❌ MongoDB connection error:', err);
     console.error('💡 Make sure your MongoDB Atlas connection string is correct in .env file');
-    process.exit(1);
+    console.error('⚠️  Server will continue running but database operations will fail');
+    // Don't exit - let the server continue running
   });
 
 // Handle connection events
@@ -71,6 +72,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export the app for Vercel serverless. Only listen when running locally.
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}

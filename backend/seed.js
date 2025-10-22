@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Equation = require('./models/Equation');
+require('dotenv').config();
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://varunbyna157_db_user:JTGeBrpZy6lCSsTa@cluster0.mgbx7np.mongodb.net/algebra-balance-lab';
 
 const sampleEquations = [
   {

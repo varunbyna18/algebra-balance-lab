@@ -28,6 +28,28 @@ A comprehensive web application that helps users understand and solve basic alge
 
 ```
 algebra-balance-lab/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Navbar.js
+│   │   │   ├── Navbar.css
+│   │   │   ├── BalanceScale.js
+│   │   │   └── BalanceScale.css
+│   │   ├── pages/
+│   │   │   ├── Home.js
+│   │   │   ├── Home.css
+│   │   │   ├── EquationSolver.js
+│   │   │   ├── EquationSolver.css
+│   │   │   ├── Dashboard.js
+│   │   │   └── Dashboard.css
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   └── index.js
+│   ├── public/
+│   ├── package.json
+│   └── vercel.json
 ├── backend/
 │   ├── models/
 │   │   ├── Equation.js
@@ -37,25 +59,8 @@ algebra-balance-lab/
 │   │   └── attempts.js
 │   ├── server.js
 │   ├── seed.js
-│   └── package.json
-├── src/
-│   ├── components/
-│   │   ├── Navbar.js
-│   │   ├── Navbar.css
-│   │   ├── BalanceScale.js
-│   │   └── BalanceScale.css
-│   ├── pages/
-│   │   ├── Home.js
-│   │   ├── Home.css
-│   │   ├── EquationSolver.js
-│   │   ├── EquationSolver.css
-│   │   ├── Dashboard.js
-│   │   └── Dashboard.css
-│   ├── services/
-│   │   └── api.js
-│   ├── App.js
-│   ├── App.css
-│   └── index.js
+│   ├── package.json
+│   └── vercel.json
 └── README.md
 ```
 
@@ -97,9 +102,9 @@ The backend will run on `http://localhost:5000`
 
 ### Frontend Setup
 
-1. Navigate to the root directory:
+1. Navigate to the frontend directory:
    ```bash
-   cd ..
+   cd frontend
    ```
 
 2. Install dependencies:
@@ -113,6 +118,25 @@ The backend will run on `http://localhost:5000`
    ```
 
 The frontend will run on `http://localhost:3000`
+
+### Quick Start (Both Frontend and Backend)
+
+From the root directory, you can install all dependencies and start both servers:
+
+1. Install all dependencies:
+   ```bash
+   npm run install-all
+   ```
+
+2. Start frontend only:
+   ```bash
+   npm run dev
+   ```
+
+3. Start backend only (in a separate terminal):
+   ```bash
+   npm run backend
+   ```
 
 ## API Endpoints
 
