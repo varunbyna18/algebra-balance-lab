@@ -7,7 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://algebra-balance-lab.vercel.app',
+    'https://algebra-balance-lab-git-main-varunbyna18.vercel.app',
+    'https://algebra-balance-lab-git-main-varunbyna18s-projects.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB connection - use direct connection string
@@ -60,6 +68,19 @@ const attemptRoutes = require('./routes/attempts');
 // Use routes
 app.use('/api/equations', equationRoutes);
 app.use('/api/attempts', attemptRoutes);
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Algebra Balance Lab API', 
+    status: 'running',
+    endpoints: {
+      health: '/api/health',
+      equations: '/api/equations',
+      attempts: '/api/attempts'
+    }
+  });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
